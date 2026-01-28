@@ -3,7 +3,7 @@
 # ⚓ SWAVLAMBAN 2025: Naval-Grade Swarm Intelligence
 ### **Distributed Algorithm for Communications-Denied Environments**
 
-![Naval Swarm Banner](logo.jpg)
+![Naval Swarm Banner](Logo.jpg)
 
 [![Challenge](https://img.shields.io/badge/Challenge-Distributed_Swarm-blue.svg)]()
 [![Network](https://img.shields.io/badge/Network-60%25_Packet_Loss-red.svg)]()
