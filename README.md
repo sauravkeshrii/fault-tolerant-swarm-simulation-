@@ -1,116 +1,90 @@
 # fault-tolerant-swarm-simulation-
 Computational model of a resilient drone swarm implementing sensor-driven agents and algorithmic leader reallocation under node failure
 
-Fault-Tolerant Multi-Agent Drone Swarm Simulation
-Overview
 
-This project presents a computational simulation of a drone swarm system with dynamic leader election and decentralized coordination. The model focuses on maintaining mission continuity in the presence of agent (drone) failures, inspired by real-world autonomous and defense-oriented swarm systems.
+# 🚁 Fault-Tolerant Multi-Agent Drone Swarm Simulation
 
-The system demonstrates how algorithmic logic can be used to model resilient multi-agent behavior in autonomous engineering systems.
+### Computational Modeling of Resilient Autonomous Systems
 
-Problem Statement
 
-In distributed drone operations, failure of a leading unit can disrupt coordination. This project models a fault-tolerant swarm architecture where:
 
-Multiple drone agents operate simultaneously
+## 📌 Overview
+This project presents a **computational simulation of a drone swarm** with dynamic leader election and decentralized coordination. The system models how autonomous agents maintain mission continuity under node failure conditions.
 
-Agents make decisions based on simulated sensor inputs
 
-A leader–follower structure is maintained
 
-Upon leader failure, a new leader is selected automatically
+## 🎯 Problem Statement
+In distributed drone operations, failure of a leading unit can disrupt coordination. This model demonstrates:
 
-Swarm coordination continues without global shutdown
+- Multiple autonomous drone agents  
+- Sensor-driven decision updates  
+- Leader–follower coordination structure  
+- Automatic leader reallocation during failure  
+- Continuous swarm operation without system collapse  
 
-System Architecture
+
+
+## System Architecture
+
 
 Sensors → Agent State Update → Coordination Logic
-                ↓
-            Leader Election Algorithm
-                ↓
-           Failure Detection & Reassignment
+↓
+Leader Election
+↓
+Failure Detection & Reassignment
 
-Core Features
 
-Multi-agent system modeling
+## ⚙ Core Features
 
-Sensor-driven agent behavior
+- Multi-agent system modeling  
+- Sensor-based agent behavior  
+- Dynamic leader election algorithm  
+- Fault-tolerant coordination logic  
+- Decentralized control simulation  
 
-Dynamic leader election
 
-Fault-tolerant swarm coordination
+## 📂 Repository Structure
 
-Decentralized control logic
 
-Simulation of autonomous decision processes
-
-Repository Structure
 fault-tolerant-swarm-simulation/
 │
-├── main.py                     # Simulation entry point
-├── requirements.txt            # Dependencies
+├── main.py
+├── requirements.txt
 │
-├── swarm/                      # Core agent and coordination logic
-│   ├── agent.py
-│   ├── leader_election.py
-│   ├── state_manager.py
-│   └── communication.py
-│
+├── swarm/
 ├── sensors/
-│   └── sensor_model.py
-│
 ├── environment/
-│   └── environment.py
-│
 ├── failure/
-│   └── failure_handler.py
-│
 ├── config/
-│   └── simulation_config.yaml
-│
 └── results/
-    └── sample_outputs/
 
-Engineering Focus
 
-This project demonstrates:
 
-Computational modeling of autonomous systems
+## 🔬 Engineering Focus
 
-Distributed control and coordination logic
+This work demonstrates:
 
-Swarm intelligence principles
+- Computational modeling of autonomous systems  
+- Swarm intelligence principles  
+- Distributed control logic  
+- Algorithmic fault tolerance  
+- System-level engineering simulation  
 
-Algorithmic fault tolerance
 
-System-level engineering simulation
 
-How to Run
+## ▶ How to Run
+
+
 pip install -r requirements.txt
 python main.py
 
-Technical Domains Involved
+## 🧩 Technical Domains
 
-Multi-Agent Systems
+Multi-Agent Systems • Swarm Intelligence • Autonomous Systems • Distributed Control • Engineering Simulation
 
-Swarm Intelligence
 
-Distributed Control Systems
 
-Autonomous Systems Modeling
+## 📜 License
 
-Engineering Simulation
+MIT License
 
-Future Improvements
-
-Advanced leader election strategies
-
-Communication delay modeling
-
-Energy/battery failure modeling
-
-Formation control algorithms
-
-License
-
-This project is licensed under the MIT License.
