@@ -1,59 +1,114 @@
-# Naval Grade Swarm Agent - SWAVLAMBAN 2025
+<div align="center">
 
-**Challenge 1: Distributed Swarm Algorithm**
+# ⚓ SWAVLAMBAN 2025: Naval-Grade Swarm Intelligence
+### **Distributed Algorithm for Communications-Denied Environments**
 
-This repository contains a **Naval Grade** implementation of a distributed swarm algorithm, designed for high reliability, fault tolerance, and operation in communications-denied environments (60% packet loss).
+![Naval Swarm Banner](naval_swarm_banner.png)
 
-## 🚀 Key Features
+[![Challenge](https://img.shields.io/badge/Challenge-Distributed_Swarm-blue.svg)]()
+[![Network](https://img.shields.io/badge/Network-60%25_Packet_Loss-red.svg)]()
+[![Status](https://img.shields.io/badge/Status-BATTLE_READY-green.svg)]()
 
-### 1. Robust "Term-Based" Leader Election (Raft-Lite)
-- **Problem**: In lossy networks, old leaders ("zombies") can wake up and confuse the fleet.
-- **Solution**: We implemented an **Epoch/Term** system. Agents only obey commands from the current term. If a leader fails, a new one is elected in **< 2.5 seconds** automatically.
-- **Status**: ✅ PASSED (Verified via `verify_failure.py`)
+</div>
 
-### 2. Gossip-Based Task Reliability
-- **Problem**: 60% Packet Loss means simple commands often fail to reach the worker.
-- **Solution**: The Leader uses a probabilistic **Gossip Protocol** to "whisper" active assignments until completion is confirmed.
-- **Status**: ✅ PASSED (10/10 Robots completed tasks in stress tests)
+---
 
-### 3. Strict Stability Locks
-- **Problem**: Tasks must not "flip-flop" between robots.
-- **Solution**: Assignments are **HARD LOCKED** for 60 seconds (`TASK_STABILITY_TIME`), ensuring commitment even if network conditions fluctuate.
+## ⚡ Mission Overview
 
-## 📂 Repository Structure
+In high-intensity maritime operations, centralized command is a liability. This repository provides a **Hardened Distributed Swarm Algorithm** designed to maintain mission continuity in the face of **60% packet loss** and **active attrition warfare**.
 
-- **`agent.py`**: 🧠 **THE SOLUTION**. The core logic for every robot.
-- `verify_scale.py`: verification script for 10-robot scalability.
-- `verify_failure.py`: verification script for Leader Crash recovery.
-- `verify_stress.py`: verification script for 60% Packet Loss.
-- **`verify_visual.py`**: 🎥 **RADAR VISUALIZER**. Runs a real-time ASCII simulation for recording the demo video.
+Built for the **Swavlamban 2025 Hackathon**, this solution ensures that 10+ heterogeneous robots can coordinate tasks, elect leaders, and survive continuous node failures without any external server or "God-view".
 
-## 🛠️ Design Philosophy
+---
 
-We adhered to a **"Zero-Magic"** principle:
-1.  **No Central Server**: Every agent runs identical code.
-2.  **Stateless Recovery**: Any robot can reboot and rejoin instantly.
-3.  **Low Bandwidth**: Event-driven architecture (only speaks when necessary).
+## �️ Elite Features
+
+### 🌪️ Raft-Lite Leader Election (Term-Based)
+Traditional elections fail when "zombie" nodes reappear after a network lapse. Our **Epoch/Term** system ensures:
+- **Zero Confusion**: Agents only obey the latest Term.
+- **Rapid Failover**: New leader emerges in **< 2.5 seconds** when a crash is detected.
+- **Conflict Resolution**: Deterministic ID-based "Bully" protocol for identical Terms.
+
+### 📡 Probabilistic Gossip Tasking
+When the network is jammed, a single "Assign" command isn't enough. 
+- **Persistence**: The Leader uses a 40% probability gossip loop to "re-whisper" active assignments.
+- **Reliability**: 10/10 Robots confirmed task completion even under **extreme stress tests**.
+
+### 🔒 Operational Stability Locks
+Prevents "Task Flip-Flopping" during network jitters. 
+- Assignments are **HARD LOCKED** for 60s (`TASK_STABILITY_TIME`).
+- Robots commit to their objective even if they momentarily lose contact with the fleet.
+
+---
+
+## 🎥 Tactical Radar Visualizer
+
+Witness the swarm in action. The visualizer simulates an **Attrition Warfare** scenario where leaders are systematically "killed" (removed) every 20-40 seconds.
+
+```bash
+# Run the real-time naval tactical display
+python verify_visual.py
+```
+
+### **Fleet Capabilities Represented:**
+| Asset Class | Symbol | Asset Class | Symbol |
+| :--- | :--- | :--- | :--- |
+| **Optical Camera** | `C` | **Thermal Sensor** | `T` |
+| **LIDAR System** | `L` | **Acoustic Sensor** | `A` |
+| **Manipulator Arm** | `M` | **Electronic Scanner** | `E` |
+| **Payload Delivery**| `P` | **Defensive Module** | `D` |
+
+---
 
 ## 📊 Verification Results
 
-| Test Case | Scenario | Result |
-| :--- | :--- | :--- |
-| **Leader Stability** | Single Leader emerged | ✅ PASS |
-| **Fail-Over** | Leader Killed -> New Leader < 3s | ✅ PASS |
-| **Scalability** | 10 Robots (5 Cam, 5 Lidar) | ✅ PASS |
-| **Jamming** | 60% Packet Loss Survival | ✅ PASS |
+| Scenario | Objective | Stress Level | Result |
+| :--- | :--- | :--- | :--- |
+| **Leader Stability** | Single stable leader emergence | Low | ✅ **PASSED** |
+| **Kill Chain** | Crash recovery < 3.0s | High | ✅ **PASSED** |
+| **Scalability** | 10 Assets (Heterogeneous) | Variable | ✅ **PASSED** |
+| **Electronic Warfare**| 60% Packet Loss / Jamming | Extreme | ✅ **PASSED** |
 
+---
 
 ## 🏗️ Technical Architecture
 
-### Core Components
-*   **Role Management**: Strict `IntEnum` for roles (Leader/Follower) avoids string parsing errors.
-*   **Finite State Machine (FSM)**: Agent logic is divided into distinct phases (`tick` -> `receive` -> `heartbeat` -> `elect` -> `work`) to prevent race conditions.
-*   **Type Safety**: All methods utilize Python `typing` hints (`List[int]`, `Dict`) for maintainability.
+### **Naval-Grade Logic (agent.py)**
+The core agent is a **Finite State Machine (FSM)** designed for predictability:
+1.  **`tick`**: Global clock synchronization.
+2.  **`receive`**: High-speed inbox processing.
+3.  **`elect`**: Decoupled leader logic.
+4.  **`assign`**: Gossip-based task distribution.
+5.  **`work`**: Async execution with completion callbacks.
 
-### "Black Box" Telemetry
-The agent includes a built-in `logging` system that outputs tagged logs (e.g., `[INFO] (Id: 1) Term 2: Leader Elected`). This allows for post-mission analysis of:
-- Election timing
-- Conflict resolution events
-- Task assignment logic loops
+### **Telemetry & Black Box**
+Every agent generates tagged logs for post-mission analysis:
+- `[INFO] (Id: 1) Term 3: I am now the LEADER.`
+- `[WARN] (Id: 4) Conflict! Yielding to higher term Leader 1.`
+
+---
+
+## 🚀 Getting Started
+
+1.  **Clone the Mission Data:**
+    ```bash
+    git clone [repository-url]
+    cd Naval-Hackathons
+    ```
+
+2.  **Run Stress Tests:**
+    ```bash
+    python verify_stress.py  # 60% Packet Loss verification
+    python verify_failure.py # Leader Crash verification
+    ```
+
+3.  **Launch the Visualizer:**
+    ```bash
+    python verify_visual.py
+    ```
+
+---
+
+<div align="center">
+<b>Developed for SWAVLAMBAN 2025 - Swarm Algorithm Challenge ⚓</b>
+</div>
