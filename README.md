@@ -1,92 +1,115 @@
-# fault-tolerant-swarm-simulation-
-Computational model of a resilient drone swarm implementing sensor-driven agents and algorithmic leader reallocation under node failure
+<div align="center">
 
+# ⚓ SWAVLAMBAN 2025: Naval-Grade Swarm Intelligence
+### **Distributed Algorithm for Communications-Denied Environments**
 
-# 🚁 Fault-Tolerant Multi-Agent Drone Swarm Simulation
+![Naval Swarm Banner](naval_swarm_banner.png)
 
-### Computational Modeling of Resilient Autonomous Systems
+[![Challenge](https://img.shields.io/badge/Challenge-Distributed_Swarm-blue.svg)]()
+[![Network](https://img.shields.io/badge/Network-60%25_Packet_Loss-red.svg)]()
+[![Status](https://img.shields.io/badge/Status-BATTLE_READY-green.svg)]()
 
+</div>
 
+---
 
-## 📌 Overview
-This project presents a **computational simulation of a drone swarm** with dynamic leader election and decentralized coordination. The system models how autonomous agents maintain mission continuity under node failure conditions.
+## ⚡ Mission Overview
 
-## 🛠 Tech Stack
-<p align="left"> <img src="https://img.shields.io/badge/Python-Programming-blue?logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?logo=numpy&logoColor=white" /> <img src="https://img.shields.io/badge/Simulation-Modeling-orange?logo=codeforces&logoColor=white" /> <img src="https://img.shields.io/badge/Multi--Agent%20Systems-Autonomous%20Logic-green" /> <img src="https://img.shields.io/badge/Algorithm%20Design-Leader%20Election-critical" /> <img src="https://img.shields.io/badge/Engineering-Simulation-lightgrey" /> </p> <img src="https://img.shields.io/badge/MATLAB-Engineering%20Computing-orange?logo=Mathworks&logoColor=white" />
+In high-intensity maritime operations, centralized command is a liability. This repository provides a **Hardened Distributed Swarm Algorithm** designed to maintain mission continuity in the face of **60% packet loss** and **active attrition warfare**.
 
+Built for the **Swavlamban 2025 Hackathon**, this solution ensures that 10+ heterogeneous robots can coordinate tasks, elect leaders, and survive continuous node failures without any external server or "God-view".
 
-## 🎯 Problem Statement
-In distributed drone operations, failure of a leading unit can disrupt coordination. This model demonstrates:
+---
 
-- Multiple autonomous drone agents  
-- Sensor-driven decision updates  
-- Leader–follower coordination structure  
-- Automatic leader reallocation during failure  
-- Continuous swarm operation without system collapse  
+## �️ Elite Features
 
+### 🌪️ Raft-Lite Leader Election (Term-Based)
+Traditional elections fail when "zombie" nodes reappear after a network lapse. Our **Epoch/Term** system ensures:
+- **Zero Confusion**: Agents only obey the latest Term.
+- **Rapid Failover**: New leader emerges in **< 2.5 seconds** when a crash is detected.
+- **Conflict Resolution**: Deterministic ID-based "Bully" protocol for identical Terms.
 
+### 📡 Probabilistic Gossip Tasking
+When the network is jammed, a single "Assign" command isn't enough. 
+- **Persistence**: The Leader uses a 40% probability gossip loop to "re-whisper" active assignments.
+- **Reliability**: 10/10 Robots confirmed task completion even under **extreme stress tests**.
 
-## System Architecture
+### 🔒 Operational Stability Locks
+Prevents "Task Flip-Flopping" during network jitters. 
+- Assignments are **HARD LOCKED** for 60s (`TASK_STABILITY_TIME`).
+- Robots commit to their objective even if they momentarily lose contact with the fleet.
 
+---
 
-Sensors → Agent State Update → Coordination Logic
-↓
-Leader Election
-↓
-Failure Detection & Reassignment
+## 🎥 Tactical Radar Visualizer
 
+Witness the swarm in action. The visualizer simulates an **Attrition Warfare** scenario where leaders are systematically "killed" (removed) every 20-40 seconds.
 
-## ⚙ Core Features
+```bash
+# Run the real-time naval tactical display
+python verify_visual.py
+```
 
-- Multi-agent system modeling  
-- Sensor-based agent behavior  
-- Dynamic leader election algorithm  
-- Fault-tolerant coordination logic  
-- Decentralized control simulation  
+### **Fleet Capabilities Represented:**
+| Asset Class | Symbol | Asset Class | Symbol |
+| :--- | :--- | :--- | :--- |
+| **Optical Camera** | `C` | **Thermal Sensor** | `T` |
+| **LIDAR System** | `L` | **Acoustic Sensor** | `A` |
+| **Manipulator Arm** | `M` | **Electronic Scanner** | `E` |
+| **Payload Delivery**| `P` | **Defensive Module** | `D` |
 
+---
 
-## 📂 Repository Structure
+## 📊 Verification Results
 
+| Scenario | Objective | Stress Level | Result |
+| :--- | :--- | :--- | :--- |
+| **Leader Stability** | Single stable leader emergence | Low | ✅ **PASSED** |
+| **Kill Chain** | Crash recovery < 3.0s | High | ✅ **PASSED** |
+| **Scalability** | 10 Assets (Heterogeneous) | Variable | ✅ **PASSED** |
+| **Electronic Warfare**| 60% Packet Loss / Jamming | Extreme | ✅ **PASSED** |
 
-fault-tolerant-swarm-simulation/
-│
-├── main.py
-├── requirements.txt
-│
-├── swarm/
-├── sensors/
-├── environment/
-├── failure/
-├── config/
-└── results/
+---
 
+## 🏗️ Technical Architecture
 
+### **Naval-Grade Logic (agent.py)**
+The core agent is a **Finite State Machine (FSM)** designed for predictability:
+1.  **`tick`**: Global clock synchronization.
+2.  **`receive`**: High-speed inbox processing.
+3.  **`elect`**: Decoupled leader logic.
+4.  **`assign`**: Gossip-based task distribution.
+5.  **`work`**: Async execution with completion callbacks.
 
-## 🔬 Engineering Focus
+### **Telemetry & Black Box**
+Every agent generates tagged logs for post-mission analysis:
+- `[INFO] (Id: 1) Term 3: I am now the LEADER.`
+- `[WARN] (Id: 4) Conflict! Yielding to higher term Leader 1.`
 
-This work demonstrates:
+---
 
-- Computational modeling of autonomous systems  
-- Swarm intelligence principles  
-- Distributed control logic  
-- Algorithmic fault tolerance  
-- System-level engineering simulation  
+## 🚀 Getting Started
 
+1.  **Clone the Mission Data:**
+    ```bash
+    git clone [repository-url]
+    cd Naval-Hackathons
+    ```
 
+2.  **Run Stress Tests:**
+    ```bash
+    python verify_stress.py  # 60% Packet Loss verification
+    python verify_failure.py # Leader Crash verification
+    ```
 
-## ▶ How to Run
+3.  **Launch the Visualizer:**
+    ```bash
+    python verify_visual.py
+    ```
 
+---
 
-pip install -r requirements.txt
-python main.py
-
-## 🧩 Technical Domains
-
-Multi-Agent Systems • Swarm Intelligence • Autonomous Systems • Distributed Control • Engineering Simulation
-
-
-
-## 📜 License
-
-MIT License
+<div align="center">
+<b>Developed for SWAVLAMBAN 2025 - Swarm Algorithm Challenge ⚓</b>
+</div>
 
