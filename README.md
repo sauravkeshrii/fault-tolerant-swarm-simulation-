@@ -11,13 +11,26 @@
 
 </div>
 
+## 📑 Abstract: Computational Swarm Dynamics
+
+This repository serves as a high-fidelity **Computational Model** for distributed multi-agent systems (MAS) operating in stochastic, high-entropy environments. By simulating a decentralised naval fleet, the project explores the intersection of **Consensus Protocols (Raft-lite)**, **Probabilistic State Synchronization**, and **Spatial Optimization**.
+
+The model demonstrates how complex collective behavior—such as adaptive leadership and resilient task allocation—can emerge from simple, deterministic local rules even when the underlying communication graph is 60% disconnected.
+
 ---
 
-## ⚡ Mission Overview
+## 🧬 Computational Theory & Design
 
-In high-intensity maritime operations, centralized command is a liability. This repository provides a **Hardened Distributed Swarm Algorithm** designed to maintain mission continuity in the face of **60% packet loss** and **active attrition warfare**.
+### 1. Stochastic Connectivity Modeling
+Rather than assuming ideal communications, the core simulation layer implements a **Bernoulli Loss Model** ($P_{drop} = 0.6$). This forces the computational logic to move beyond standard request-response cycles into a **State-Gossip Architecture**, where information convergence is achieved through probabilistic repetition rather than guaranteed delivery.
 
-Built for the **Swavlamban 2025 Hackathon**, this solution ensures that 10+ heterogeneous robots can coordinate tasks, elect leaders, and survive continuous node failures without any external server or "God-view".
+### 2. Distributed Consensus (Temporal Logic)
+The system utilizes a **Term-Based Epoch System** to enforce linearizability in a distributed environment. This prevents the "Split-Brain" syndrome common in multi-agent systems. The model uses:
+- **Heuristic ID Priority**: A deterministic tie-breaker for leader election.
+- **Lease-based Heartbeats**: Using temporal locks to maintain authority without centralized control.
+
+### 3. Spatial Task Optimization
+Task allocation is modeled as a **greedy spatial assignment problem**. The Leader agent computes the Euclidean distance matrix $\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$ across a heterogeneous capabiliy set to minimize "fleet-wide response lag," demonstrating real-time computational geometry in a dynamic environment.
 
 ---
 
@@ -109,7 +122,30 @@ Every agent generates tagged logs for post-mission analysis:
 
 ---
 
+## 🛠️ Tech Stack & Prerequisites
+
+| Category | Tools & Technologies |
+| :--- | :--- |
+| **Language** | Python 3.8+ |
+| **Libraries** | `math`, `time`, `random`, `logging`, `enum` (Standard Library) |
+| **Simulation** | Custom Discrete-Event Environment |
+| **Visualizer** | ANSI-Terminal Graphics / ASCII Render Engine |
+| **Modeling** | Distributed State Machines & Stochastic Graph Theory |
+
+---
+
+## 📄 License
+
+This project is released under the **MIT License**. 
+
+Copyright (c) 2026
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+---
+
 <div align="center">
 <b>Developed for SWAVLAMBAN 2025 - Swarm Algorithm Challenge ⚓</b>
 </div>
-
