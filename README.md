@@ -11,6 +11,8 @@ Computational model of a resilient drone swarm implementing sensor-driven agents
 ## 📌 Overview
 This project presents a **computational simulation of a drone swarm** with dynamic leader election and decentralized coordination. The system models how autonomous agents maintain mission continuity under node failure conditions.
 
+## 🛠 Tech Stack
+<p align="left"> <img src="https://img.shields.io/badge/Python-Programming-blue?logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?logo=numpy&logoColor=white" /> <img src="https://img.shields.io/badge/Simulation-Modeling-orange?logo=codeforces&logoColor=white" /> <img src="https://img.shields.io/badge/Multi--Agent%20Systems-Autonomous%20Logic-green" /> <img src="https://img.shields.io/badge/Algorithm%20Design-Leader%20Election-critical" /> <img src="https://img.shields.io/badge/Engineering-Simulation-lightgrey" /> </p> <img src="https://img.shields.io/badge/MATLAB-Engineering%20Computing-orange?logo=Mathworks&logoColor=white" />
 
 
 ## 🎯 Problem Statement
