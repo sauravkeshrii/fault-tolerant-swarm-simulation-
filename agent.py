@@ -1,6 +1,5 @@
-# -----------------------------------------------------------------------------
-# SWAVLAMBAN 2025: Distributed Swarm Algorithm (Naval Grade Implementation)
-# -----------------------------------------------------------------------------
+# Distributed Swarm Algorithm
+
 
 import time
 import math
@@ -306,3 +305,4 @@ class Agent:
             self.tick()
             elapsed = time.time() - start
             time.sleep(max(0, TICK_DT - elapsed))
+
